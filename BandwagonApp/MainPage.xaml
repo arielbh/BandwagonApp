@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="BandwagonApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BandwagonApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Pivot Title="Bandwagon" IsLocked="{Binding AreWeLockedOnInfo}">
+        <PivotItem Header="info" DataContext="{Binding InfoViewModel}">
+            <StackPanel>
+                <ComboBox Header="Available Bands:" ItemsSource="{Binding Bands}" SelectedItem="{Binding SelectedBand, Mode=TwoWay}" DisplayMemberPath="Name"/>
+                <Button Content="Refresh" Command="{Binding RefreshCommand, Mode=OneTime}" HorizontalAlignment="Left"/>
+                <Button Content="Connect" Command="{Binding ConnectCommand, Mode=OneTime}"/>
+                <TextBox Header="Hardware Version:" Text="{Binding HardwareVersion, Mode=OneWay}" IsReadOnly="True"/>
+                <TextBox Header="Firmware Version:" Text="{Binding FirmwareVersion, Mode=OneWay}" IsReadOnly="True"/>
+            </StackPanel>
+        </PivotItem>
+        <PivotItem Header="sensors" DataContext="{Binding SensorsViewModel}">
+            <StackPanel>
+                <Button Content="Heart Rate" Command="{Binding HeartRateCommand, Mode=OneTime}"/>
+                <TextBlock>
+                        <Run Text="Current Heart Rate: "/>
+                        <Run Text="{Binding HeartRate}"/>
+                        <Run Text=". Quality:"/>
+                        <Run Text="{Binding HeartRateQuality}"/>
+                </TextBlock>
+                <Button Content="Calories" Command="{Binding CaloriesCommand, Mode=OneTime}"/>
+                <TextBlock>
+                        <Run Text="Current Calories: "/>
+                        <Run Text="{Binding Calories}"/>
+                </TextBlock>
+                <Button Content="Temperture" Command="{Binding TemperturesCommand, Mode=OneTime}"/>
+                <TextBlock>
+                        <Run Text="Current Temperture: "/>
+                        <Run Text="{Binding Temperture}"/>
+                </TextBlock>
+            </StackPanel>
+        </PivotItem>
+        <PivotItem Header="stuff" DataContext="{Binding StuffViewModel}">
+            <StackPanel>
+                <Button Content="Create Tile" Command="{Binding CreateTileCommand, Mode=OneTime}"/>
+                <Button Content="Add Page" Command="{Binding AddPageCommand, Mode=OneTime}"/>
+                <Button Content="Set Page Content" Command="{Binding SetPageCommand, Mode=OneTime}"/>
+
+                <Button Content="Open Dialog" Command="{Binding OpenDialogCommand, Mode=OneTime}"/>
+                <Button Content="Good Vibration" Command="{Binding SendVibrationCommand, Mode=OneTime}"/>
+            </StackPanel>
+            
+        </PivotItem>
+                
+    </Pivot>
+
+</Page>
