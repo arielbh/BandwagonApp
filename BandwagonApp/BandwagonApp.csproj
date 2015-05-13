@@ -129,7 +129,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="SuiteValue.UI.MVVM">
-      <HintPath>..\..\..\SuiteValue\lib\portable-net45+wp8+win8+wp81+win81+wpa81\SuiteValue.UI.MVVM.dll</HintPath>
+      <HintPath>..\packages\SuiteValue.UI.MVVM.1.0.4-alpah\lib\portable-net45+wp8+win8+wp81+win81+wpa81\SuiteValue.UI.MVVM.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

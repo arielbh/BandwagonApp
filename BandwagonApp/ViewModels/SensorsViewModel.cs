@@ -10,7 +10,7 @@ using SuiteValue.UI.MVVM;
 
 namespace BandwagonApp.ViewModels
 {
-    public class SensorsViewModel : INotifyPropertyChanged
+    public class SensorsViewModel : ViewModelBase
     {
         private readonly IBandClient _client;
 
@@ -242,17 +242,6 @@ namespace BandwagonApp.ViewModels
                     OnPropertyChanged();
                 }
             }
-        }
-
-        
-
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
