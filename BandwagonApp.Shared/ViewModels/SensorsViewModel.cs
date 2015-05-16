@@ -29,11 +29,11 @@ namespace BandwagonApp.ViewModels
                     {
                         if (_tempertureStarted)
                         {
+                            _client.SensorManager.SkinTemperature.ReadingChanged -= SkinTemperature_ReadingChanged;
                             Temperture = 0.0;
                             _tempertureStarted = false;
                             await _client.SensorManager.SkinTemperature.StopReadingsAsync();
-                            _client.SensorManager.SkinTemperature.ReadingChanged -= SkinTemperature_ReadingChanged;
-
+                            return;
                         }
                         var hasPermission = _client.SensorManager.SkinTemperature.GetCurrentUserConsent() ==
                                             UserConsent.Granted;
@@ -91,11 +91,11 @@ namespace BandwagonApp.ViewModels
                     {
                         if (_caloriesStarted)
                         {
+                            _client.SensorManager.Calories.ReadingChanged -= Calories_ReadingChanged;
                             Calories = 0;
                             await _client.SensorManager.Calories.StopReadingsAsync();
                             _caloriesStarted = false;
-                            _client.SensorManager.Calories.ReadingChanged -= Calories_ReadingChanged;
-
+                            return;
                         }
                         var hasPermission = _client.SensorManager.Calories.GetCurrentUserConsent() ==
                                             UserConsent.Granted;
@@ -156,12 +156,12 @@ namespace BandwagonApp.ViewModels
                     {
                         if (_heartRateStarted)
                         {
+                            _client.SensorManager.HeartRate.ReadingChanged -= OnHeartRateOnReadingChanged;
                             HeartRate = 0;
                             HeartRateQuality = null;
                             _heartRateStarted = false;
                             await _client.SensorManager.HeartRate.StopReadingsAsync();
-                            _client.SensorManager.HeartRate.ReadingChanged += OnHeartRateOnReadingChanged;
-
+                            return;
                         }
                         var hasPermission = _client.SensorManager.HeartRate.GetCurrentUserConsent() ==
                                             UserConsent.Granted;
@@ -179,12 +179,6 @@ namespace BandwagonApp.ViewModels
                         }
                        if (hasPermission)
                        {
-                           //IEnumerable<TimeSpan> supportedHeartBeatReportingIntervals =
-                           //    _client.SensorManager.HeartRate.SupportedReportingIntervals;
-                           //var item = supportedHeartBeatReportingIntervals.Last();
-                           //item.
-
-                           // hook up to the Heartrate sensor ReadingChanged event
                            _client.SensorManager.HeartRate.ReadingChanged += OnHeartRateOnReadingChanged;
                            try
                            {

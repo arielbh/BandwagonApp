@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Pivot Title="Bandwagon" IsLocked="{Binding AreWeLockedOnInfo}">
-        <PivotItem Header="info" DataContext="{Binding InfoViewModel}">
+        <PivotItem Header="info" DataContext="{Binding InfoViewModel}" d:IsHidden="True">
             <StackPanel>
                 <ComboBox Header="Available Bands:" ItemsSource="{Binding Bands}" SelectedItem="{Binding SelectedBand, Mode=TwoWay}" DisplayMemberPath="Name"/>
                 <Button Content="Refresh" Command="{Binding RefreshCommand, Mode=OneTime}" HorizontalAlignment="Left"/>
@@ -20,25 +20,25 @@
         <PivotItem Header="sensors" DataContext="{Binding SensorsViewModel}">
             <StackPanel>
                 <Button Content="Heart Rate" Command="{Binding HeartRateCommand, Mode=OneTime}"/>
-                <TextBlock>
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}">
                         <Run Text="Current Heart Rate: "/>
                         <Run Text="{Binding HeartRate}"/>
                         <Run Text=". Quality:"/>
                         <Run Text="{Binding HeartRateQuality}"/>
                 </TextBlock>
                 <Button Content="Calories" Command="{Binding CaloriesCommand, Mode=OneTime}"/>
-                <TextBlock>
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}">
                         <Run Text="Current Calories: "/>
                         <Run Text="{Binding Calories}"/>
                 </TextBlock>
                 <Button Content="Temperture" Command="{Binding TemperturesCommand, Mode=OneTime}"/>
-                <TextBlock>
+                <TextBlock Style="{StaticResource TitleTextBlockStyle}">
                         <Run Text="Current Temperture: "/>
                         <Run Text="{Binding Temperture}"/>
                 </TextBlock>
             </StackPanel>
         </PivotItem>
-        <PivotItem Header="stuff" DataContext="{Binding StuffViewModel}">
+        <PivotItem Header="stuff" DataContext="{Binding StuffViewModel}" d:IsHidden="True">
             <StackPanel>
                 <Button Content="Create Tile" Command="{Binding CreateTileCommand, Mode=OneTime}"/>
                 <Button Content="Add Page" Command="{Binding AddPageCommand, Mode=OneTime}"/>

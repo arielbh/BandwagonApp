@@ -28,49 +28,21 @@ namespace BandwagonApp
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page, INotifyPropertyChanged
+    public sealed partial class MainPage : Page
     {
-
+        private MainViewModel _viewModel;
 
         public MainPage()
         {
             this.InitializeComponent();
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
-            InfoViewModel = new InfoViewModel();
-            InfoViewModel.PropertyChanged += InfoViewModel_PropertyChanged;
-            AreWeLockedOnInfo = true;
-            DataContext = this;
+
+            DataContext = _viewModel = new MainViewModel();
         }
 
-        private void InfoViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == "BandClient")
-            {
-                if (InfoViewModel.BandClient != null)
-                {
-                    SensorsViewModel = new SensorsViewModel(InfoViewModel.BandClient);
-                    StuffViewModel = new StuffViewModel(InfoViewModel.BandClient);
-                    AreWeLockedOnInfo = false;
-                }
 
-            }
-        }
-
-        private bool _areWeLockedOnInfo;
-
-        public bool AreWeLockedOnInfo
-        {
-            get { return _areWeLockedOnInfo; }
-            set
-            {
-                if (value != _areWeLockedOnInfo)
-                {
-                    _areWeLockedOnInfo = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
+     
 
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
@@ -79,64 +51,7 @@ namespace BandwagonApp
         /// This parameter is typically used to configure the page.</param>
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            await InfoViewModel.GetBands();
-        }
-
-   
-     
-
-        private StuffViewModel _stuffViewModel;
-
-        public StuffViewModel StuffViewModel
-        {
-            get { return _stuffViewModel; }
-            set
-            {
-                if (value != _stuffViewModel)
-                {
-                    _stuffViewModel = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        private SensorsViewModel _sensorsViewModel;
-
-        public SensorsViewModel SensorsViewModel
-        {
-            get { return _sensorsViewModel; }
-            set
-            {
-                if (value != _sensorsViewModel)
-                {
-                    _sensorsViewModel = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        private InfoViewModel _infoViewModel;
-
-        public InfoViewModel InfoViewModel
-        {
-            get { return _infoViewModel; }
-            set
-            {
-                if (value != _infoViewModel)
-                {
-                    _infoViewModel = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+            await _viewModel.GetBands();
         }
     }
 }
