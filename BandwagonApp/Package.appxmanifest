@@ -24,6 +24,7 @@
     </Application>
   </Applications>
   <Capabilities>
+    <DeviceCapability Name="proximity" />
     <DeviceCapability Name="bluetooth.rfcomm" xmlns="http://schemas.microsoft.com/appx/2013/manifest">
       <Device Id="any">
         <!-- Used by the Microsoft Band SDK -->

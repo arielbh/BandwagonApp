@@ -18,7 +18,23 @@
             </StackPanel>
         </PivotItem>
         <PivotItem Header="sensors" DataContext="{Binding SensorsViewModel}">
-            <StackPanel>
+            <ScrollViewer>
+                <ItemsControl ItemsSource="{Binding Sensors}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="White" BorderThickness="1" CornerRadius="2" Margin="0,0,0,8" Padding="8">
+                                <StackPanel>
+                                    <Button Content="{Binding Name}" Command="{Binding ToggleSensorCommand, Mode=OneTime}"/>
+                                    <TextBlock Text="{Binding ErrorMessage}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding Result}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Border>
+
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+            <!--<StackPanel>
                 <Button Content="Heart Rate" Command="{Binding HeartRateCommand, Mode=OneTime}"/>
                 <TextBlock Style="{StaticResource TitleTextBlockStyle}">
                         <Run Text="Current Heart Rate: "/>
@@ -36,7 +52,7 @@
                         <Run Text="Current Temperture: "/>
                         <Run Text="{Binding Temperture}"/>
                 </TextBlock>
-            </StackPanel>
+            </StackPanel>-->
         </PivotItem>
         <PivotItem Header="stuff" DataContext="{Binding StuffViewModel}" d:IsHidden="True">
             <StackPanel>

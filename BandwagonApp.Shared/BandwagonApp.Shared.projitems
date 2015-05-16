@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\InfoViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SensorsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SensorViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\StuffViewModel.cs" />
   </ItemGroup>
 </Project>
