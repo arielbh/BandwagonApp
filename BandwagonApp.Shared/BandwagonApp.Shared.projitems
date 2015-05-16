@@ -15,4 +15,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SensorViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\StuffViewModel.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\baby_icon2_24x24.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\baby_icon2_46x46.png" />
+  </ItemGroup>
 </Project>

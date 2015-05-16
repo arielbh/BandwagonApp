@@ -47,6 +47,7 @@ namespace BandwagonApp.ViewModels
                 return _toggleSensorCommand ?? (_toggleSensorCommand = new DelegateCommand(
                     () =>
                     {
+
                         try
                         {
                             if (IsCollecting)

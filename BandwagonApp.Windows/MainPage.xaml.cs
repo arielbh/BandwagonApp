@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using BandwagonApp.ViewModels;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,9 +23,18 @@ namespace BandwagonApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private MainViewModel _viewModel;
+
         public MainPage()
         {
             this.InitializeComponent();
+            DataContext = _viewModel = new MainViewModel();
+        }
+
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            await _viewModel.GetBands();
         }
     }
 }

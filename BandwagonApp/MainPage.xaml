@@ -34,25 +34,6 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </ScrollViewer>
-            <!--<StackPanel>
-                <Button Content="Heart Rate" Command="{Binding HeartRateCommand, Mode=OneTime}"/>
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}">
-                        <Run Text="Current Heart Rate: "/>
-                        <Run Text="{Binding HeartRate}"/>
-                        <Run Text=". Quality:"/>
-                        <Run Text="{Binding HeartRateQuality}"/>
-                </TextBlock>
-                <Button Content="Calories" Command="{Binding CaloriesCommand, Mode=OneTime}"/>
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}">
-                        <Run Text="Current Calories: "/>
-                        <Run Text="{Binding Calories}"/>
-                </TextBlock>
-                <Button Content="Temperture" Command="{Binding TemperturesCommand, Mode=OneTime}"/>
-                <TextBlock Style="{StaticResource TitleTextBlockStyle}">
-                        <Run Text="Current Temperture: "/>
-                        <Run Text="{Binding Temperture}"/>
-                </TextBlock>
-            </StackPanel>-->
         </PivotItem>
         <PivotItem Header="stuff" DataContext="{Binding StuffViewModel}" d:IsHidden="True">
             <StackPanel>

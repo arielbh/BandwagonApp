@@ -8,6 +8,61 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Hub Header="Bandwagon">
+            <!-- Hero tile -->
+            <HubSection Width="780" Margin="0,0,80,0">
+                <HubSection.Background>
+                    <ImageBrush ImageSource="Assets/hero.jpg" Stretch="UniformToFill"/>
+                </HubSection.Background>
+            </HubSection>
+            <HubSection Header="info" DataContext="{Binding InfoViewModel}">
+                <HubSection.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <ComboBox Header="Available Bands:" ItemsSource="{Binding Bands}" SelectedItem="{Binding SelectedBand, Mode=TwoWay}" DisplayMemberPath="Name"/>
+                            <Button Content="Refresh" Command="{Binding RefreshCommand, Mode=OneTime}" HorizontalAlignment="Left"/>
+                            <Button Content="Connect" Command="{Binding ConnectCommand, Mode=OneTime}"/>
+                            <TextBox Header="Hardware Version:" Text="{Binding HardwareVersion, Mode=OneWay}" IsReadOnly="True"/>
+                            <TextBox Header="Firmware Version:" Text="{Binding FirmwareVersion, Mode=OneWay}" IsReadOnly="True"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </HubSection.ContentTemplate>
+            </HubSection>
+            <HubSection Header="sensors" DataContext="{Binding SensorsViewModel}" Width="400">
+                <HubSection.ContentTemplate>
+                    <DataTemplate>
+                        <ScrollViewer HorizontalAlignment="Stretch">
+                            <ItemsControl ItemsSource="{Binding Sensors}" HorizontalAlignment="Stretch">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderBrush="White" BorderThickness="1" CornerRadius="2" Margin="0,0,0,8" Padding="8"  Width="380">
+                                            <StackPanel>
+                                                <Button Content="{Binding Name}" Command="{Binding ToggleSensorCommand, Mode=OneTime}"/>
+                                                <TextBlock Text="{Binding ErrorMessage}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="Wrap"/>
+                                                <TextBlock Text="{Binding Result}" Style="{StaticResource TitleTextBlockStyle}" TextWrapping="Wrap"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </DataTemplate>
+                </HubSection.ContentTemplate>
+            </HubSection>
+            <HubSection Header="stuff" DataContext="{Binding StuffViewModel}">
+                <HubSection.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Button Content="Create Tile" Command="{Binding CreateTileCommand, Mode=OneTime}"/>
+                            <Button Content="Add Page" Command="{Binding AddPageCommand, Mode=OneTime}"/>
+                            <Button Content="Set Page Content" Command="{Binding SetPageCommand, Mode=OneTime}"/>
+                            <Button Content="Open Dialog" Command="{Binding OpenDialogCommand, Mode=OneTime}"/>
+                            <Button Content="Good Vibration" Command="{Binding SendVibrationCommand, Mode=OneTime}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </HubSection.ContentTemplate>
+            </HubSection>
 
+        </Hub>
     </Grid>
 </Page>
